@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "baseUrl": "../",
+      "esModuleInterop": true,
+      "removeComments": true,
+      "stripInternal": true,
+  
+      //    "noImplicitAny": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+//      "strictPropertyInitialization": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "declaration": false,
+      "sourceMap": false,
+      "target": "esnext",
+      "lib": [
+        "ESNext"
+      ]
+    },
+    "include": [
+        "../src/**/*.ts",
+    ],
+    "exclude": [
+        "../node_modules"
+    ]
+}

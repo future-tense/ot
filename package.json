@@ -1,0 +1,74 @@
+{
+    "name": "@futuretense/ot",
+    "version": "1.0.0",
+    "description": "Oblivious Transfers",
+    "main": "lib/cjs/index.js",
+    "module": "lib/esm/index.js",
+    "types": "index.d.ts",
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./lib/types/*"
+            ]
+        }
+    },
+    "type": "module",
+    "files": [
+        "lib",
+        "!lib/**/*.test.*",
+        "!lib/*/base/data.*"
+    ],
+    "scripts": {
+        "clean": "rm -rf lib",
+        "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+        "build:esm": "npx tsc -p config/tsconfig.esm.json",
+        "build:cjs": "npx tsc -p config/tsconfig.cjs.json",
+        "build:types": "npx tsc -p config/tsconfig.types.json",
+        "test": "npx ava"
+    },
+    "author": "Johan Stén <johan@futuretense.io>",
+    "license": "MIT",
+    "devDependencies": {
+        "@ava/typescript": "^4.1.0",
+        "@types/node": "^20.11.22",
+        "ava": "^6.1.2",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@futuretense/curves": "^1.0.1",
+        "@noble/curves": "^1.4.0",
+        "@noble/hashes": "^1.4.0",
+        "secure-random": "^1.1.2",
+        "uint8arrays": "^5.1.0"
+    },
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./lib/types/index.d.ts",
+                "default": "./lib/esm/index.js"
+            },
+            "require": {
+                "types": "./lib/types/index.d.ts",
+                "default": "./lib/cjs/index.js"
+            }
+        }
+    },
+    "ava": {
+        "files": [
+            "!lib/cjs/**/*.js"
+        ],
+        "typescript": {
+            "rewritePaths": {
+                "src/": "lib/esm/"
+            },
+            "compile": false
+        }
+    },
+    "keywords": [
+        "oblivious-transfer",
+        "ot",
+        "multi-party-computation",
+        "mpc",
+        "crypto"
+    ]
+}
